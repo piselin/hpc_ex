@@ -4,11 +4,6 @@
 #include <functional>
 
 
-double func(double x) {
-	return std::sqrt(x)*std::log(x);
-}
-
-// maybe use function object or template instead
 inline double integrate(std::function<double(double)> fun, double a, double b, unsigned n)
 {	
 	assert(n>0);
@@ -35,5 +30,8 @@ int main()
 	bound_t b = 4;
 	unsigned bins = 100;
 
-	std::cout << integrate(func, a,b,bins) << std::endl;
+	// lambda function
+	auto f = [] (double x) { return std::sqrt(x)*std::log(x); };
+
+	std::cout << integrate(f, a,b,bins) << std::endl;
 }
