@@ -1,13 +1,15 @@
 #include <iostream>
 #include <cmath>
 #include <cassert>
+#include <functional>
 
-// better function object (with some inline maybe?), pass function by reference or use template
-double fun(double x) {
-	return sqrt(x)*log(x);
+
+double func(double x) {
+	return std::sqrt(x)*std::log(x);
 }
 
-double integrate(double a, double b, unsigned n)
+// maybe use function object or template instead
+inline double integrate(std::function<double(double)> fun, double a, double b, unsigned n)
 {	
 	assert(n>0);
 	double S = 0.0;			// the sum
@@ -31,6 +33,7 @@ int main()
 
 	bound_t a = 1;
 	bound_t b = 4;
+	unsigned bins = 100;
 
-	std::cout << integrate(a,b,1000) << std::endl;
+	std::cout << integrate(func, a,b,bins) << std::endl;
 }
