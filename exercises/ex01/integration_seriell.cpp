@@ -30,6 +30,5 @@ int main()
 
 	// lambda function
 	auto f = [] (double x) { return std::sqrt(x)*std::log(x); };
-
-	std::cout << integrate(f,a,b,bins) << std::endl;
+	std::cout << integrate(f,a,b,bins); << std::endl;
 }
